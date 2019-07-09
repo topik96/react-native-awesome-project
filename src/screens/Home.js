@@ -12,6 +12,7 @@ import {
 import { image } from '../assets/images'
 import Cart from '../components/cart'
 import InputQTY from '../components/input-qty'
+import StorageUtils from '../utils/Storage'
 
 const { width } = Dimensions.get('window')
 
@@ -30,6 +31,7 @@ export default class Home extends React.Component {
   }
 
   componentDidMount = () => {
+    StorageUtils.setToken('test token brooooo')
     console.log('componentDidMount')
   }
 
@@ -60,10 +62,12 @@ export default class Home extends React.Component {
     })
   }
 
-  
-  render() {
-    console.log('render')
-    console.log(this.props)
+  getToken = async () => {
+    const token = await StorageUtils.getToken()
+    return token
+  }
+
+    render() {
 
     //RENDER BOX FLEXBOX
     // return(

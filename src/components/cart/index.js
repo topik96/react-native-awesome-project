@@ -16,7 +16,8 @@ const Cart = ({ count }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    maxHeight:50,
   },
   containerBadge:{
     justifyContent:'center',

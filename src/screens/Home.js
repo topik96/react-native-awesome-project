@@ -87,16 +87,16 @@ export default class Home extends React.Component {
     // )
 
     // RENDER COMPONENT (props & state)
-    // return (
-    //   <View style={[styles.container,{alignItems:'center',justifyContent:'center'}]}>
-    //     <InputQTY
-    //       incrementItem={this.incrementItem}
-    //       decrementItem={this.decrementItem}
-    //       itemName={'Indomie'}
-    //     />
-    //   <Cart count={this.state.total}/>
-    //   </View>
-    // );
+    return (
+      <View style={[styles.container,{alignItems:'center',justifyContent:'center'}]}>
+        <InputQTY
+          incrementItem={this.incrementItem}
+          decrementItem={this.decrementItem}
+          itemName={'Indomie'}
+        />
+      <Cart count={this.state.total}/>
+      </View>
+    );
 
     //RENDER DIFFERENT PLATFORM
     // return(
@@ -116,25 +116,25 @@ export default class Home extends React.Component {
     // )
 
     //RENDER PASS DATA TO DETAIL
-    return(
-      <View style={[styles.container,{justifyContent:'center',alignItems:'center'}]}>
-        <TextInput 
-          placeholder={'input your name'}
-          onChangeText={(text=>{
-            this.setState({inputName: text})
-          })}
-          style={{
-            borderBottomColor:'gray',
-            borderBottomWidth:1
-          }}
-        />
-        <TouchableOpacity
-        onPress={()=>this.passDataToDetail(this.state.inputName)}
-        >
-          <Text>to Details</Text>
-        </TouchableOpacity>
-      </View>
-    )
+    // return(
+    //   <View style={[styles.container,{justifyContent:'center',alignItems:'center'}]}>
+    //     <TextInput 
+    //       placeholder={'input your name'}
+    //       onChangeText={(text=>{
+    //         this.setState({inputName: text})
+    //       })}
+    //       style={{
+    //         borderBottomColor:'gray',
+    //         borderBottomWidth:1
+    //       }}
+    //     />
+    //     <TouchableOpacity
+    //     onPress={()=>this.passDataToDetail(this.state.inputName)}
+    //     >
+    //       <Text>to Details</Text>
+    //     </TouchableOpacity>
+    //   </View>
+    // )
   }
 }
 
@@ -142,7 +142,6 @@ const styles = StyleSheet.create({
   container:{
     flex: 1,
     flexDirection:'column',
-    alignContent:'center',
     // ...Platform.select({
     //   ios:{
     //     backgroundColor: '#e74c3c',

@@ -25,8 +25,10 @@ const InputQuantity = ({ incrementItem, decrementItem, itemName }) => {
 
 const styles = StyleSheet.create({
   container:{
+    flex:1,
     flexDirection:'row',
-    margin:8
+    margin:8,
+    maxHeight:32,
   },
   button:{
     flex: 1,
@@ -40,7 +42,7 @@ const styles = StyleSheet.create({
     backgroundColor:'blue'
   },
   textStyle:{
-    color:'orange',
+    color:'white',
     fontWeight:'bold'
   }
 })

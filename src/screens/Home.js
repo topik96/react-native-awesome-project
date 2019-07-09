@@ -6,11 +6,12 @@ import {
   StyleSheet,
   Dimensions,
   Image,
-  Platform
+  Platform,
+  TextInput
 } from 'react-native';
-import { image } from './assets/images'
-import Cart from './components/cart'
-import InputQTY from './components/input-qty'
+import { image } from '../assets/images'
+import Cart from '../components/cart'
+import InputQTY from '../components/input-qty'
 
 const { width } = Dimensions.get('window')
 
@@ -18,7 +19,8 @@ export default class Home extends React.Component {
   constructor(props){
       super(props)
       this.state = {
-          total:0
+          total:0,
+          inputName:''
       }
   }
 
@@ -52,9 +54,16 @@ export default class Home extends React.Component {
     this.setState({ total: this.state.total == 0 ? 0 : --this.state.total  })
   }
 
+  passDataToDetail = (data) => {
+    this.props.navigation.navigate('DetailBook',{
+      name:data
+    })
+  }
+
   
   render() {
     console.log('render')
+    console.log(this.props)
 
     //RENDER BOX FLEXBOX
     // return(
@@ -90,19 +99,40 @@ export default class Home extends React.Component {
     // );
 
     //RENDER DIFFERENT PLATFORM
+    // return(
+    //   <View 
+    //     style={[
+    //       styles.container,
+    //       {
+    //         justifyContent:'center', 
+    //         alignItems:'center'
+    //       }
+    //     ]}>
+    //     <Image
+    //      style={styles.imageStyle}
+    //      source={image.osLogo}/>
+    //      <Text>{Platform.OS === 'ios' ? 'iOS FANBOY' : 'ANDROID FANBOY'}</Text>
+    //   </View>
+    // )
+
+    //RENDER PASS DATA TO DETAIL
     return(
-      <View 
-        style={[
-          styles.container,
-          {
-            justifyContent:'center', 
-            alignItems:'center'
-          }
-        ]}>
-        <Image
-         style={styles.imageStyle}
-         source={image.osLogo}/>
-         <Text>{Platform.OS === 'ios' ? 'iOS FANBOY' : 'ANDROID FANBOY'}</Text>
+      <View style={[styles.container,{justifyContent:'center',alignItems:'center'}]}>
+        <TextInput 
+          placeholder={'input your name'}
+          onChangeText={(text=>{
+            this.setState({inputName: text})
+          })}
+          style={{
+            borderBottomColor:'gray',
+            borderBottomWidth:1
+          }}
+        />
+        <TouchableOpacity
+        onPress={()=>this.passDataToDetail(this.state.inputName)}
+        >
+          <Text>to Details</Text>
+        </TouchableOpacity>
       </View>
     )
   }

@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { image } from '../assets/images'
 import Cart from '../components/cart'
+import ListBook from '../components/list-book'
 import InputQTY from '../components/input-qty'
 import StorageUtils from '../utils/Storage'
 
@@ -68,6 +69,13 @@ export default class Home extends React.Component {
   }
 
     render() {
+
+    //RENDER FLATLIST COMPONENT
+    // return (
+    //   <ListBook 
+    //   items={['Google Education', 'Steve Job', 'Topik Mujianto']}
+    //   />
+    // )
 
     //RENDER BOX FLEXBOX
     // return(

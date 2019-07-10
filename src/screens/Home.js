@@ -78,13 +78,14 @@ export default class Home extends React.Component {
     // )
 
     //RENDER BOX FLEXBOX
-    // return(
-    //   <View style={styles.container}> 
-    //      <View style={[styles.box,{backgroundColor: 'blue'}]}/>
-    //      <View style={[styles.box,{backgroundColor: 'red'}]}/>
-    //      <View style={[styles.box,{backgroundColor: 'green'}]}/>
-    //   </View>
-    // )
+    return(
+      <View style={styles.container}> 
+         <View style={[styles.box,{backgroundColor: 'blue', flexShrink:2}]}/>
+         <View style={[styles.box,{backgroundColor: 'red'}]}/>
+         <View style={[styles.box,{backgroundColor: 'green'}]}/>
+         <View style={[styles.box,{backgroundColor: 'black', flexShrink: 150}]}/>
+      </View>
+    )
 
 
     //RENDER UPDATE CART
@@ -153,7 +154,8 @@ export default class Home extends React.Component {
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    flexDirection:'column',
+    flexDirection:'row',
+    flexWrap:'wrap'
     // ...Platform.select({
     //   ios:{
     //     backgroundColor: '#e74c3c',
@@ -164,8 +166,9 @@ const styles = StyleSheet.create({
     // })
   },
   box: {
+    flexShrink:1,
     height: 100,
-    width: 50
+    width: 150
   },
   imageStyle:{
     width:100,

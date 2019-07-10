@@ -1,6 +1,7 @@
 import { createStackNavigator, createAppContainer } from "react-navigation"
 import HomeScreen from './screens/Home'
 import DetailBookScreen from './screens/DetailBook'
+import CartWithReduxScreen from './screens/CartWithRedux'
 
 const AppNavigator = createStackNavigator({
     Home: {
@@ -8,6 +9,9 @@ const AppNavigator = createStackNavigator({
       navigationOptions:{
         headerTitle:'Home'
       }
+    },
+    CartWithRedux:{
+      screen: CartWithReduxScreen
     },
     DetailBook: {
         screen: DetailBookScreen,
@@ -17,7 +21,7 @@ const AppNavigator = createStackNavigator({
     },
   }
   ,{
-    initialRouteName:'Home'
+    initialRouteName:'CartWithRedux'
   }
   );
   

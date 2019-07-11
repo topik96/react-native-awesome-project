@@ -78,14 +78,14 @@ export default class Home extends React.Component {
     // )
 
     //RENDER BOX FLEXBOX
-    return(
-      <View style={styles.container}> 
-         <View style={[styles.box,{backgroundColor: 'blue', flexShrink:2}]}/>
-         <View style={[styles.box,{backgroundColor: 'red'}]}/>
-         <View style={[styles.box,{backgroundColor: 'green'}]}/>
-         <View style={[styles.box,{backgroundColor: 'black', flexShrink: 150}]}/>
-      </View>
-    )
+    // return(
+    //   <View style={styles.container}> 
+    //      <View style={[styles.box,{backgroundColor: 'blue', flexShrink:2}]}/>
+    //      <View style={[styles.box,{backgroundColor: 'red'}]}/>
+    //      <View style={[styles.box,{backgroundColor: 'green'}]}/>
+    //      <View style={[styles.box,{backgroundColor: 'black', flexShrink: 150}]}/>
+    //   </View>
+    // )
 
 
     //RENDER UPDATE CART
@@ -100,33 +100,33 @@ export default class Home extends React.Component {
     // )
 
     // RENDER COMPONENT (props & state)
-    return (
-      <View style={[styles.container,{alignItems:'center',justifyContent:'center'}]}>
-        <InputQTY
-          incrementItem={this.incrementItem}
-          decrementItem={this.decrementItem}
-          itemName={'Indomie'}
-        />
-      <Cart count={this.state.total}/>
-      </View>
-    );
+    // return (
+    //   <View style={[styles.container,{alignItems:'center',justifyContent:'center'}]}>
+    //     <InputQTY
+    //       incrementItem={this.incrementItem}
+    //       decrementItem={this.decrementItem}
+    //       itemName={'Indomie'}
+    //     />
+    //   <Cart count={this.state.total}/>
+    //   </View>
+    // );
 
     //RENDER DIFFERENT PLATFORM
-    // return(
-    //   <View 
-    //     style={[
-    //       styles.container,
-    //       {
-    //         justifyContent:'center', 
-    //         alignItems:'center'
-    //       }
-    //     ]}>
-    //     <Image
-    //      style={styles.imageStyle}
-    //      source={image.osLogo}/>
-    //      <Text>{Platform.OS === 'ios' ? 'iOS FANBOY' : 'ANDROID FANBOY'}</Text>
-    //   </View>
-    // )
+    return(
+      <View 
+        style={[
+          styles.container,
+          {
+            justifyContent:'center', 
+            alignItems:'center'
+          }
+        ]}>
+        <Image
+         style={styles.imageStyle}
+         source={image.osLogo}/>
+         <Text>{Platform.OS === 'ios' ? 'iOS FANBOY' : 'ANDROID FANBOY'}</Text>
+      </View>
+    )
 
     //RENDER PASS DATA TO DETAIL
     // return(

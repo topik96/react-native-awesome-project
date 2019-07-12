@@ -3,7 +3,8 @@ import {
     View,
     Text,
     Image,
-    StyleSheet
+    StyleSheet,
+    BackHandler
 } from 'react-native'
 
 const profilePicture = require('../assets/images/os-logo.png')
@@ -14,9 +15,18 @@ const styles = StyleSheet.create({
         justifyContent:'center'
     }
 })
+
 export default class ProfileScreen extends Component {
+
+componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
+}
+
+handleBackButton(){
+    console.log('tapped')
+}
  render(){
-    const {name} = this.props.navigation.state.params
+    const {email} = this.props.navigation.state.params
      return(
         <View style={styles.container}>
         <Image
@@ -30,9 +40,7 @@ export default class ProfileScreen extends Component {
                 marginBottom: 16
             }}
         />
-        <Text>{`Your Name ${name}`}</Text>
-        <Text>Your Name {name}</Text>
-        <Text>{name}</Text>
+        <Text>{`Your Mail ${email}`}</Text>
     </View>
      )
  }

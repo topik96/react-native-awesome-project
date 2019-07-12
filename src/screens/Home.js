@@ -31,11 +31,6 @@ export default class Home extends React.Component {
     console.log('componentWillMount')
   }
 
-  componentDidMount = () => {
-    StorageUtils.setToken('test token brooooo')
-    console.log('componentDidMount')
-  }
-
   shouldComponentUpdate = (props, state) => {
     console.log('shouldComponentUpdate, current state = ', state)
     return true

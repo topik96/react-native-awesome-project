@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import CustomInput from '../components/CustomInput';
 import API from '../utils/Api';
-import StorageUtils from '../utils/Storage'
+import StorageUtils from '../utils/Storage';
 
 const styles = StyleSheet.create({
   container: {
@@ -28,12 +28,12 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class TrainingD2 extends Component {
+export default class RegisterUser extends Component {
   constructor(props) {
     super(props);
-    const {email} =this.props.navigation.state.params
     this.state = {
-      email: email,
+      fullName:'',
+      email: '',
       password: '',
       isLoading: false
     };
@@ -67,6 +67,13 @@ export default class TrainingD2 extends Component {
   //     }
   // }
 
+  async componentWillMount(){
+    const token = await StorageUtils.getToken()
+    if(token){
+      this.props.navigation.navigate('ListBook')
+    }
+  }
+
   handleAlert(message) {
     this.handleInput('isLoading', false);
     Alert.alert(
@@ -77,8 +84,9 @@ export default class TrainingD2 extends Component {
           text: 'OK',
           onPress: () => {
             this.setState({
-              email: null,
-              password: null
+              username: null,
+              password: null,
+              fullName:null
             });
           }
         }
@@ -88,17 +96,18 @@ export default class TrainingD2 extends Component {
   }
 
   handleInput(stateKey, value) {
-    console.log(value);
     this.setState({ [stateKey]: value });
   }
 
-  handleLogin() {
-    const { email, password } = this.state;
+  handleRegister() {
+    const { fullName, email, password } = this.state;
     this.handleInput('isLoading', true);
-    API.login({ email: email, password: password })
+    API .register({fullname:fullName, email: email, password: password })
       .then((res) => {
-        StorageUtils.setToken(res.data.data.token)
-        this.props.navigation.navigate('ListBook')
+        this.handleInput('isLoading', false);
+        this.props.navigation.navigate('Home', {
+          email:res.data.data.email
+        });
       })
       .catch((err) => {
        this.handleAlert(err.message)
@@ -107,13 +116,18 @@ export default class TrainingD2 extends Component {
   }
 
   render() {
-    const { email, password, isLoading } = this.state;
+    const {fullName, email, password, isLoading} = this.state;
 
     if (isLoading) {
       return (<ActivityIndicator size={'large'} />) 
     } else {
       return (
         <View style={styles.container}>
+         <CustomInput
+            defaultValue={fullName}
+            handleInput={this.handleInput}
+            defaultKey="fullName"
+          />
           <CustomInput
             defaultValue={email}
             handleInput={this.handleInput}
@@ -128,10 +142,10 @@ export default class TrainingD2 extends Component {
           <TouchableOpacity
           style={{ marginTop:20 }}
             onPress={() => {
-              this.handleLogin();
+              this.handleRegister();
             }}
           >
-            <Text style={[styles.defaultText]}>Login</Text>
+            <Text style={[styles.defaultText]}>Register</Text>
           </TouchableOpacity>
         </View>
       );

@@ -1,0 +1,14 @@
+{
+	"applinks": {
+		"apps": [],
+		"details": [{
+				"appID": "P53KJ6MXZH.org.reactjs.native.nodeflux",
+				"paths": ["/verification"]
+			},
+			{
+				"appID": "P53KJ6MXZH.org.reactjs.native.nodeflux",
+				"paths": ["/login-otp"]
+			}
+		]
+	}
+}
